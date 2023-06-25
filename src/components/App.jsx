@@ -1,10 +1,17 @@
-import '../App.css';
-import { Outlet, Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
-import moment from 'moment';
-// import {Moment as moment} from 'react-moment';
+import { useRef } from 'react';
 
-const { Header, Content, Footer } = Layout;
+import '../App.css';
+import { useLocation } from 'react-router-dom';
+import { Layout, Menu, Row } from 'antd';
+import moment from 'moment';
+
+import { Home } from '../components/Home/Home';
+import { AboutMe } from '../components/AboutMe/AboutMe';
+import { Skills } from '../components/Skills/Skills';
+import { Projects } from '../components/Projects/Projects';
+import { Experience } from '../components/Experience/Experience';
+
+const { Header, Footer } = Layout;
 
 const headerStyle = {
   position: 'sticky',
@@ -12,64 +19,75 @@ const headerStyle = {
   zIndex: 1,
   width: '100%',
   display: 'flex',
-  alignItems: 'center', background:'#fff'
-}
-const contentStyle = {
-  padding: '25px 25px',
+  alignItems: 'center',
+  background: '#fff'
 }
 const footerStyle = {
   textAlign: 'center',
+  padding: '10px'
 }
 
-const Help = ()=>{
-  return(
-    <Link to="/">Help</Link>
-  )
-}
-
-const MEMU_OPTIONS = [
+const URIS = [
   {
-    key: 'home',
-    label: <Link to="/">Home</Link> 
+    uri: '#home',
+    label: 'Home'
   },
   {
-    key: 'private',
-    label: <Link to="/private">Private</Link> 
+    uri: '#about-me',
+    label: 'About Me'
   },
   {
-    key: 'public',
-    label: <Link to="/public">Public</Link>
+    uri: '#skills',
+    label: 'Skills'
   },
   {
-    key: 'help',
-    label: <Help/>
-  }
+    uri: '#projects',
+    label: 'Projects'
+  },
   
+  {
+    uri: '#experience',
+    label: 'Experience'
+  },
+  {
+    uri: 'mailto:raquel.villon.r@gmail.com',
+    label: 'Contact Me'
+  }
 ]
 
-
-
 const App = () => {
-
+  const location = useLocation()
+  const headerRef = useRef();
   return (
-    <Layout>
-      <Header style={headerStyle} >
-        {/* <div className="demo-logo" /> */}
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={['home']}
-          items={ (MEMU_OPTIONS)}
-        />
+    <Layout style={{ "backgroundColor": '#fff' }}
+    >
+      <Header style={headerStyle} ref={headerRef} >
+        <Row>
+          <Menu mode="horizontal" defaultSelectedKeys={[location.pathname.split('/')[1]]}
+            items={URIS.map(uri=>({
+              key: uri.uri ,
+              label: <a href={uri.uri}>{uri.label}</a>
+            }))}
+          >
+          </Menu>
+        </Row>
+        <Row>
+
+        </Row>
       </Header>
-      <Content className="site-layout" style={contentStyle} >
-        <div style={{ minHeight: 380 }} >
-          <Outlet />
-        </div>
-      </Content>
+        
+        {/* <Outlet context={[headerRef]} /> */}
+        <Home/>
+        <AboutMe/>
+        <Skills/>
+        <Projects/>
+        <Experience/>
+
       <Footer style={footerStyle} >
         Raquel ©{moment().format("YYYY")}
       </Footer>
     </Layout>
+
   );
 }
 

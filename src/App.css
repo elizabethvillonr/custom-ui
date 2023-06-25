@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+:root {
+  --headingSize: 65px;
+  --background-color: black;
+  --accent-color: #e8f1ed
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  /* border: 1px solid ; */
 }
 
-.App-link {
-  color: #61dafb;
+
+.swift-text span {
+  display: inline-block;
+  overflow: hidden;
+  animation: .3s swift-up ease-in-out forwards;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.swift-text span:not(:last-child) i {
+  margin-right: 10px;
+}
+
+.swift-text i {
+  font-style: normal;
+  font-size: 1.5rem;
+  position: relative;
+  top: var(--headingSize);
+  animation: .7s swift-up ease-in-out forwards;
+}
+
+.home-icon, .home-title{
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+.home-description{
+  font-size: 2em;
+}
+
+.section-container{
+  display: block;
+  width: 100%;
+}
+.app-container:nth-child(odd){
+  background-color: var(--accent-color);
+}
+
+.skill-icon{
+  font-size: 2em;
+  margin-top: 30px;
+}
+.skill-card{ 
+  width: 150 
+}
+.timeLine-card{
+  margin: 0px 25px 0px 20px;
+  text-align: left;
+}
+.timeLine-label{
+  margin: 0px 25px;
+}
+
+.time-line-icon-container{
+  border-radius: 50%;
+  padding: 10px 10px;
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.time-line-icon{
+  font-size: 28px;
+}
+.experience-tech-space{
+  margin-top: 10px;
+}
+.experience-tech-icon{
+}
+.job-description li{
+  color: #808080;
+  margin-bottom: 10px;
+}
+
+@keyframes swift-up {
   to {
-    transform: rotate(360deg);
+    top: 0;
   }
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-card-small >.ant-card-head{
+  background-color: var(--accent-color);
 }
