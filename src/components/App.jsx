@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import '../App.css';
-import { useLocation } from 'react-router-dom';
-import { Layout, Menu, Row } from 'antd';
+import { Layout, Row, Anchor, Button,Drawer } from 'antd';
 import moment from 'moment';
+
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 import { Home } from '../components/Home/Home';
 import { AboutMe } from '../components/AboutMe/AboutMe';
@@ -12,20 +13,6 @@ import { Projects } from '../components/Projects/Projects';
 import { Experience } from '../components/Experience/Experience';
 
 const { Header, Footer } = Layout;
-
-const headerStyle = {
-  position: 'sticky',
-  top: 0,
-  zIndex: 1,
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  background: '#fff'
-}
-const footerStyle = {
-  textAlign: 'center',
-  padding: '10px'
-}
 
 const URIS = [
   {
@@ -44,7 +31,7 @@ const URIS = [
     uri: '#projects',
     label: 'Projects'
   },
-  
+
   {
     uri: '#experience',
     label: 'Experience'
@@ -56,34 +43,60 @@ const URIS = [
 ]
 
 const App = () => {
-  const location = useLocation()
   const headerRef = useRef();
+
+  const [hamburgerMenu, setHamburgerMenu] = useState(false)
+
   return (
     <Layout style={{ "backgroundColor": '#fff' }}
     >
-      <Header style={headerStyle} ref={headerRef} >
+      <Header className='app-header' ref={headerRef} >
         <Row>
-          <Menu mode="horizontal" defaultSelectedKeys={[location.pathname.split('/')[1]]}
-            items={URIS.map(uri=>({
-              key: uri.uri ,
+          <div className='app-full-window-menu'>
+          <Anchor
+            targetOffset={64}
+            direction="horizontal"
+            items={URIS.map(uri => ({
+              key: uri.uri,
+              href: uri.uri,
+              title: uri.label,
               label: <a href={uri.uri}>{uri.label}</a>
-            }))}
-          >
-          </Menu>
-        </Row>
-        <Row>
+            }))} />
+          </div>
+          <div className='app-small-window-menu'>
+            <Button type="link" className='app-burger-menu' onClick={()=>setHamburgerMenu(true)}> <RxHamburgerMenu/></Button>
+            <Drawer
+              placement={'left'}
+              width={320}
+              onClose={()=>setHamburgerMenu(false)}
+              open={hamburgerMenu}
+            >
+              <Anchor
+            targetOffset={64}
+            direction="vertical"
+            items={URIS.map(uri => ({
+              key: uri.uri,
+              href: uri.uri,
+              title: uri.label,
+              label: <a href={uri.uri}>{uri.label}</a>
+            }))} />
+            </Drawer>
+          
+          </div>
+
 
         </Row>
+
       </Header>
-        
-        {/* <Outlet context={[headerRef]} /> */}
-        <Home/>
-        <AboutMe/>
-        <Skills/>
-        <Projects/>
-        <Experience/>
 
-      <Footer style={footerStyle} >
+      {/* <Outlet context={[headerRef]} /> */}
+      <Home />
+      <AboutMe />
+      <Skills />
+      <Projects />
+      <Experience />
+
+      <Footer className='app-footer' >
         Raquel ©{moment().format("YYYY")}
       </Footer>
     </Layout>

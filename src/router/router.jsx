@@ -13,7 +13,7 @@ import { ContactMe } from '../components/ContactMe/ContactMe';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/resume/",
     element:  <App />,
     errorElement: <ErrorPage />,
     children: [

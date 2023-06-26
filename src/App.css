@@ -1,15 +1,27 @@
 :root {
   --headingSize: 65px;
   --background-color: black;
-  --accent-color: #e8f1ed
-}
-
-html {
-  scroll-behavior: smooth;
+  --accent-color: #e8f1ed;
+  --strong-accent-color: #16A085;
 }
 
 body {
   background-color: #fff;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-inline: 30px;
+  background: #fff
+}
+
+.app-header .ant-anchor-link {
+  margin: 17px 3px;
 }
 
 .app-container {
@@ -19,6 +31,11 @@ body {
   align-items: center;
   min-height: 100vh;
   /* border: 1px solid ; */
+}
+
+.app-footer {
+  text-align: center;
+  padding: 10px;
 }
 
 
@@ -40,38 +57,80 @@ body {
   animation: .7s swift-up ease-in-out forwards;
 }
 
-.home-icon, .home-title{
+.home-icon,
+.home-title {
   font-size: 3em;
   margin-bottom: 20px;
 }
-.home-description{
+
+.home-icon {
+  color: var(--strong-accent-color);
+}
+
+.home-description {
   font-size: 2em;
 }
 
-.section-container{
+.section-container {
   display: block;
   width: 100%;
+  margin: 30px 0px;
 }
-.app-container:nth-child(odd){
+
+.app-container:nth-child(odd) {
   background-color: var(--accent-color);
 }
 
-.skill-icon{
+.skill-icon {
   font-size: 2em;
   margin-top: 30px;
+  color: var(--strong-accent-color);
 }
-.skill-card{ 
-  width: 150 
+
+.skill-card {
+  width: 150px;
 }
-.timeLine-card{
+
+.gutter-row {
+  padding: 8px 0;
+}
+
+.project-card {
+  width: 240px;
+}
+.project-card-img{
+  object-fit: cover;
+  height: 200px !important;
+}
+
+.project-card-text{
+  text-align: center;
+}
+
+.project-card-action-list {
+  display: flex;
+  padding: 0;
+}
+
+.project-card-action-list li {
+  list-style: none;
+  width: 50%;
+}
+
+.project-card-action-icon {
+  font-size: 20px;
+}
+
+.timeLine-card {
   margin: 0px 25px 0px 20px;
   text-align: left;
 }
-.timeLine-label{
+
+.timeLine-label {
   margin: 0px 25px;
 }
 
-.time-line-icon-container{
+.time-line-icon-container {
   border-radius: 50%;
   padding: 10px 10px;
   min-width: 40px;
@@ -79,15 +138,16 @@ body {
   border: 1px solid #ccc;
   background-color: #fff;
 }
-.time-line-icon{
+
+.time-line-icon {
   font-size: 28px;
 }
-.experience-tech-space{
+
+.experience-tech-space {
   margin-top: 10px;
 }
-.experience-tech-icon{
-}
-.job-description li{
+
+.job-description li {
   color: #808080;
   margin-bottom: 10px;
 }
@@ -98,6 +158,30 @@ body {
   }
 }
 
-:where(.css-dev-only-do-not-override-15rg2km).ant-card-small >.ant-card-head{
+:where(.css-dev-only-do-not-override-15rg2km).ant-card-small>.ant-card-head {
   background-color: var(--accent-color);
+}
+
+.app-small-window-menu {
+  display: none;
+}
+
+.app-burger-menu {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .app-header {
+    padding-inline: 20px;
+    line-height: 50px;
+    height: 50px;
+  }
+
+  .app-small-window-menu {
+    display: block;
+  }
+
+  .app-full-window-menu {
+    display: none;
+  }
 }

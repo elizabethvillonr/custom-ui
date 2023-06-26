@@ -23,10 +23,10 @@ export const ExperienceCard = ({ company, jobTitle, techStack, jobActivities }) 
       </p>
 
       <Space className='experience-tech-space' wrap size={[0, 8]} >
-        {techStack.map((tech) => <Tag color="default"> {tech} </Tag>)}
+        {techStack.map((tech) => <Tag key={tech} color="default"> {tech} </Tag>)}
       </Space>
 
-      <Drawer width={320} placement="right" closable={false} onClose={() => { setShowDrawer(false) }} open={showDrawer}>
+      <Drawer width={390} placement="right" closable={false} onClose={() => { setShowDrawer(false) }} open={showDrawer}>
         <JobDescription company={company} jobTitle={jobTitle} jobActivities={jobActivities || []} />
       </Drawer>
 

@@ -6,10 +6,10 @@ import {
   IoLogoCss3,
   IoGitBranchOutline,
 } from "react-icons/io5";
-
 import { GrMysql } from "react-icons/gr"
+import { SiTypescript, SiReactrouter, SiRedux } from "react-icons/si"
+import { FaPhp } from 'react-icons/fa'
 
-import { SiTypescript } from "react-icons/si"
 
 export const MY_SKILLS = [{
   title: 'JavaScript',
@@ -20,6 +20,16 @@ export const MY_SKILLS = [{
   title: 'React',
   level: 'Intermediate',
   icon: IoLogoReact
+},
+{
+  title: 'React Router',
+  level: 'Beginner',
+  icon: SiReactrouter
+},
+{
+  title: 'React Redux',
+  level: 'Beginner',
+  icon: SiRedux
 },
 {
   title: 'HTML',
@@ -40,6 +50,11 @@ export const MY_SKILLS = [{
   title: 'NodeJs',
   level: 'Intermediate',
   icon: IoLogoNodejs
+},
+{
+  title: 'PHP',
+  level: 'Intermediate',
+  icon: FaPhp
 },
 {
   title: 'Git',

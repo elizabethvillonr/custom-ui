@@ -8,7 +8,7 @@ export const Home = () => {
     <div id="home" className='app-container'>
       <div className='section-container'>
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24} xl={24} >
+          <Col xs={24} sm={24} md={24} lg={24} xl={24} >
             <center>
 
               <div className='home-icon'> <AiOutlineCode /></div>

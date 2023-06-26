@@ -6,15 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from "react-router-dom";
 import store from "./redux/store.js"; // we'll add this file in the next step 
 import { Provider } from "react-redux";
+import { ConfigProvider } from 'antd';
 
 import {router} from './router/router'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ConfigProvider
+      theme={{
+        token: {
+          "colorPrimary": "#16A085",
+          "colorInfo": "#16A085"
+        },
+      }}
+    >
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
+    </ConfigProvider>
   </React.StrictMode>
 );
 
